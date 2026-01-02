@@ -671,10 +671,18 @@ Please confirm the appointment.`;
   });
 
   // init
-  setLang("en");
-  document.getElementById("btnEN").addEventListener("click", ()=>setLang("en"));
-  document.getElementById("btnRU").addEventListener("click", ()=>setLang("ru"));
-  document.getElementById("btnKG").addEventListener("click", ()=>setLang("kg"));
+ document.getElementById("btnEN")?.addEventListener("click", () => {
+  alert("Russian and Kyrgyz versions will be added soon.");
+});
+
+document.getElementById("btnRU")?.addEventListener("click", () => {
+  alert("Русская версия скоро будет добавлена.");
+});
+
+document.getElementById("btnKG")?.addEventListener("click", () => {
+  alert("Кыргыз тили жакында кошулат.");
+});
+
 </script>
 </body>
 </html>
