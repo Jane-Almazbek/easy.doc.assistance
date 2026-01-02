@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -296,12 +296,10 @@
 
       <div class="rightCard">
         <div class="badgeCircle">
-          <div class="price-circle">
-  <span>PRICING</span>
-  <strong>VARIES</strong>
-  <small>BY SERVICE</small>
-</div>
-
+          <div class="small" id="badgeTop">STARTING AT</div>
+          <div class="price" id="badgePrice">$50</div>
+          <div class="small2" id="badgeBottom">PER SERVICE</div>
+        </div>
 
         <div class="ctaRow">
           <a class="btn primary" href="tel:+19297323610" id="ctaCall">
@@ -468,7 +466,7 @@
       f1t:"Accurate Forms", f1d:"We help reduce mistakes and missing information.",
       f2t:"Fast Support", f2d:"Online or in-person help, by appointment.",
       f3t:"3 Languages", f3d:"English • Russian • Kyrgyz",
-      badgeTop:"STARTING AT", badgePrice:"$30", badgeBottom:"PER SERVICE",
+      badgeTop:"STARTING AT", badgePrice:"$50", badgeBottom:"PER SERVICE",
       ctaCallText:"CALL", ctaWAText:"WHATSAPP", ctaEmailText:"EMAIL",
       noteText:"Zelle payments accepted. Write your Name + Service in the memo.",
       servicesTitle:"Services",
@@ -671,18 +669,10 @@ Please confirm the appointment.`;
   });
 
   // init
- document.getElementById("btnEN")?.addEventListener("click", () => {
-  alert("Russian and Kyrgyz versions will be added soon.");
-});
-
-document.getElementById("btnRU")?.addEventListener("click", () => {
-  alert("Русская версия скоро будет добавлена.");
-});
-
-document.getElementById("btnKG")?.addEventListener("click", () => {
-  alert("Кыргыз тили жакында кошулат.");
-});
-
+  setLang("en");
+  document.getElementById("btnEN").addEventListener("click", ()=>setLang("en"));
+  document.getElementById("btnRU").addEventListener("click", ()=>setLang("ru"));
+  document.getElementById("btnKG").addEventListener("click", ()=>setLang("kg"));
 </script>
 </body>
 </html>
