@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EasyDocs Assistance</title>
+  <meta name="description" content="EasyDocs Assistance: Green Card, DMV, insurance, rideshare, visas, leasing, translations. EN/RU/KG. Zelle: kg.girl.j@mail.ru" />
+  <style>
+    :root{
+      --bg:#f5fbff;
+      --ink:#0b1b2b;
+      --muted:#4b6075;
+      --blue:#1c79ff;
+      --blue2:#2dd4bf;
+      --card:#ffffff;
+      --stroke:rgba(11,27,43,.10);
+      --shadow:0 20px 55px rgba(11,27,43,.12);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1100px 520px at 80% 10%, rgba(28,121,255,.14), transparent 60%),
+        radial-gradient(900px 500px at 20% 80%, rgba(45,212,191,.10), transparent 60%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 52px}
+    .top{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      padding:10px 0;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:44px;height:44px;border-radius:14px;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      box-shadow: var(--shadow);
+    }
+    .brand h1{margin:0;font-size:16px;letter-spacing:.2px}
+    .brand p{margin:2px 0 0;color:var(--muted);font-size:12px}
+    .lang{
+      display:flex;gap:8px;align-items:center;
+      background:rgba(255,255,255,.7);
+      border:1px solid var(--stroke);
+      padding:6px;border-radius:999px;
+      box-shadow:0 10px 24px rgba(11,27,43,.06);
+    }
+    .lang button{
+      border:0;background:transparent;color:var(--muted);
+      padding:8px 10px;border-radius:999px;cursor:pointer;font-weight:800;
+    }
+    .lang button.active{background:rgba(28,121,255,.14);color:var(--ink)}
+    .hero{
+      position:relative;
+      background:var(--card);
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      padding:26px;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;inset:-180px -240px auto auto;
+      width:520px;height:520px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(28,121,255,.95), rgba(28,121,255,.55));
+      opacity:.95;
+    }
+    .hero:after{
+      content:"";
+      position:absolute;inset:auto auto -260px -260px;
+      width:520px;height:520px;border-radius:50%;
+      background: radial-gradient(circle at 40% 40%, rgba(45,212,191,.85), rgba(28,121,255,.20));
+      opacity:.55;
+    }
+
+    .heroGrid{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width:920px){ .heroGrid{grid-template-columns:1fr} }
+
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;
+      background:rgba(28,121,255,.12);
+      border:1px solid rgba(28,121,255,.22);
+      color:#0b2c60;
+      font-weight:900;
+      padding:10px 12px;border-radius:999px;
+      width:max-content;
+    }
+    .pillDot{width:10px;height:10px;border-radius:999px;background:var(--blue)}
+    .title{
+      margin:14px 0 8px;
+      font-size:44px;
+      line-height:1.02;
+      letter-spacing:.2px;
+    }
+    .title span{display:inline-block;color:var(--blue)}
+    .sub{margin:0;color:var(--muted);font-size:15px;max-width:62ch}
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:10px;
+      margin-top:18px;
+    }
+    @media (max-width:720px){ .features{grid-template-columns:1fr} }
+    .feat{
+      border:1px solid var(--stroke);
+      border-radius:18px;
+      padding:12px 12px;
+      background:rgba(255,255,255,.75);
+      display:flex;gap:10px;align-items:flex-start;
+    }
+    .icon{
+      width:34px;height:34px;border-radius:12px;
+      background:rgba(28,121,255,.12);
+      border:1px solid rgba(28,121,255,.18);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:900;color:var(--blue);
+      flex:0 0 auto;
+    }
+    .feat h3{margin:0;font-size:13px}
+    .feat p{margin:2px 0 0;color:var(--muted);font-size:12px}
+
+    .rightCard{
+      position:relative;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.20);
+      backdrop-filter: blur(10px);
+      padding:18px;
+      overflow:hidden;
+      min-height: 340px;
+    }
+    .badgeCircle{
+      width:220px;height:220px;border-radius:50%;
+      margin:0 auto 14px;
+      background: radial-gradient(circle at 30% 30%, rgba(28,121,255,.95), rgba(28,121,255,.55));
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      color:white;
+      border:10px solid rgba(255,255,255,.70);
+      box-shadow:0 20px 60px rgba(11,27,43,.18);
+      text-align:center;
+    }
+    .badgeCircle .small{font-weight:900;letter-spacing:.9px;opacity:.95}
+    .badgeCircle .price{font-size:46px;font-weight:1000;line-height:1;margin:6px 0}
+    .badgeCircle .small2{font-weight:900;letter-spacing:.6px;opacity:.95}
+    .ctaRow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 14px;border-radius:999px;text-decoration:none;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.8);
+      font-weight:900;
+      box-shadow:0 10px 24px rgba(11,27,43,.10);
+      cursor:pointer;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(28,121,255,.95), rgba(45,212,191,.85));
+      color:white;border-color: transparent;
+    }
+    .btn.whatsapp{
+      background:#25D366;
+      color:#ffffff;
+      border-color: transparent;
+    }
+    .btn .arrow{
+      width:28px;height:28px;border-radius:50%;
+      background:rgba(255,255,255,.22);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:900;
+    }
+
+    .sectionGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width:920px){ .sectionGrid{grid-template-columns:1fr} }
+    .card{
+      background:rgba(255,255,255,.88);
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      box-shadow:0 18px 45px rgba(11,27,43,.08);
+      padding:18px;
+    }
+    .card h2{margin:0 0 10px;font-size:18px}
+    .list{margin:0;padding-left:18px;color:var(--muted)}
+    .list li{margin:7px 0}
+    .note{
+      margin-top:10px;
+      border:1px dashed rgba(11,27,43,.18);
+      padding:10px 12px;border-radius:16px;
+      color:var(--muted);font-size:12px;
+      background:rgba(245,251,255,.8);
+    }
+    .row{
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+      padding:10px 12px;border-radius:16px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.78);
+    }
+    code{
+      font-weight:900;
+      background:rgba(28,121,255,.10);
+      border:1px solid rgba(28,121,255,.18);
+      padding:6px 10px;border-radius:12px;
+    }
+    .smallText{font-size:12px;color:var(--muted);margin-top:8px}
+    .form{display:grid;gap:10px}
+    label{font-size:12px;color:var(--muted);font-weight:900}
+    input, select, textarea{
+      width:100%;
+      padding:10px 12px;border-radius:14px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.85);
+      outline:none;
+      font-size:14px;
+    }
+    textarea{min-height:90px;resize:vertical}
+    .footer{
+      margin-top:14px;
+      color:rgba(255,255,255,.92);
+      background: linear-gradient(135deg, rgba(28,121,255,.95), rgba(45,212,191,.80));
+      border-radius:var(--radius);
+      padding:14px 16px;
+      display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      box-shadow: var(--shadow);
+    }
+    .footer .item{display:flex;gap:8px;align-items:center;font-weight:900}
+    .dotW{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.85)}
+    .disclaimer{font-size:12px;color:var(--muted);margin-top:10px}
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1 id="siteTitle">EasyDocs Assistance</h1>
+        <p id="siteTagline">Help with documents & forms</p>
+      </div>
+    </div>
+
+    <div class="lang" aria-label="Language switcher">
+      <button id="btnEN" class="active" type="button">EN</button>
+      <button id="btnRU" type="button">RU</button>
+      <button id="btnKG" type="button">KG</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="heroGrid">
+      <div>
+        <div class="pill"><span class="pillDot"></span><span id="pillText">RELIABLE & SECURE</span></div>
+        <h2 class="title" id="heroTitle">EASYDOCS <span>ASSISTANCE</span></h2>
+        <p class="sub" id="heroSub">
+          Step-by-step help with forms and documents. We speak English, Russian, and Kyrgyz.
+        </p>
+
+        <div class="features">
+          <div class="feat">
+            <div class="icon">✓</div>
+            <div>
+              <h3 id="f1t">Accurate Forms</h3>
+              <p id="f1d">We help reduce mistakes and missing information.</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon">⏱</div>
+            <div>
+              <h3 id="f2t">Fast Support</h3>
+              <p id="f2d">Online or in-person help, by appointment.</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="icon">🌍</div>
+            <div>
+              <h3 id="f3t">3 Languages</h3>
+              <p id="f3d">English • Russian • Kyrgyz</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rightCard">
+        <div class="badgeCircle">
+          <div class="small" id="badgeTop">STARTING AT</div>
+          <div class="price" id="badgePrice">$50</div>
+          <div class="small2" id="badgeBottom">PER SERVICE</div>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="tel:+19297323610" id="ctaCall">
+            <span id="ctaCallText">CALL</span> <span class="arrow">›</span>
+          </a>
+          <a class="btn whatsapp" id="ctaWA" target="_blank" rel="noopener"
+             href="https://wa.me/19297323610?text=Hello%20EasyDocs%20Assistance!%20I%20need%20help%20with%20an%20application.">
+            <span id="ctaWAText">WHATSAPP</span> <span class="arrow">›</span>
+          </a>
+          <a class="btn" href="mailto:kg.girl.j@mail.ru" id="ctaEmail">
+            <span id="ctaEmailText">EMAIL</span>
+          </a>
+        </div>
+
+        <div class="note" id="noteText">
+          Zelle payments accepted. Write your Name + Service in the memo.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sectionGrid">
+    <div class="card">
+      <h2 id="servicesTitle">Services</h2>
+      <ul class="list" id="servicesList"></ul>
+
+      <div class="disclaimer" id="disclaimer">
+        <b>Disclaimer:</b> We provide application assistance and document preparation only. We are not attorneys and do not provide legal advice. No guarantees are made.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 id="paymentsTitle">Payments (Zelle)</h2>
+      <div class="row">
+        <span><b id="zelleLabel">Zelle:</b></span>
+        <code id="zelleEmail">kg.girl.j@mail.ru</code>
+        <button class="btn" type="button" id="copyBtn">Copy</button>
+      </div>
+      <div class="smallText" id="payHelp">
+        If you need help paying with Zelle, call or WhatsApp us.
+      </div>
+
+      <div class="note" style="margin-top:10px" id="receiptNote">
+        Need a receipt? Send us your name + amount + email/phone after payment.
+      </div>
+    </div>
+  </div>
+
+  <div class="sectionGrid" style="margin-top:14px">
+    <div class="card">
+      <h2 id="apptTitle">Appointment Request</h2>
+
+      <form class="form" id="apptForm">
+        <div>
+          <label id="nameLabel" for="name">Name</label>
+          <input id="name" placeholder="Full name" />
+        </div>
+        <div>
+          <label id="serviceLabel" for="service">Service</label>
+          <select id="service"></select>
+        </div>
+        <div>
+          <label id="dayLabel" for="day">Preferred Day</label>
+          <select id="day">
+            <option>Monday</option>
+            <option>Wednesday</option>
+            <option>Friday</option>
+          </select>
+        </div>
+        <div>
+          <label id="timeLabel" for="time">Preferred Time</label>
+          <input id="time" placeholder="Example: 2:30 PM" />
+        </div>
+        <div>
+          <label id="phoneLabel2" for="phone">Your phone</label>
+          <input id="phone" placeholder="(xxx) xxx-xxxx" />
+        </div>
+        <div>
+          <label id="emailLabel2" for="email">Your email</label>
+          <input id="email" type="email" placeholder="you@email.com" />
+        </div>
+        <div>
+          <label id="notesLabel" for="notes">Notes</label>
+          <textarea id="notes" placeholder="Short details about your request"></textarea>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" href="#" id="sendAppt">Send Request</a>
+          <a class="btn whatsapp" target="_blank" rel="noopener"
+             href="https://wa.me/19297323610?text=Hello%20EasyDocs%20Assistance!%20I%20want%20to%20book%20an%20appointment.">
+            WhatsApp
+          </a>
+        </div>
+
+        <div class="smallText" id="apptSmall">
+          “Send Request” opens your email app with the request ready to send.
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2 id="contactTitle">Contact</h2>
+      <div class="row"><span class="dotW"></span><b>Phone:</b> (929) 732-3610</div>
+      <div class="row"><span class="dotW"></span><b>Email:</b> kg.girl.j@mail.ru</div>
+      <div class="row"><span class="dotW"></span><b id="langLabel">Languages:</b> English • Russian • Kyrgyz</div>
+      <div class="note" id="contactNote">
+        Available by appointment (Mon/Wed/Fri). Call or WhatsApp to confirm.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="item"><span class="dotW"></span><span>(929) 732-3610</span></div>
+    <div class="item"><span class="dotW"></span><span>kg.girl.j@mail.ru</span></div>
+    <div class="item"><span class="dotW"></span><span id="footerLang">EN • RU • KG</span></div>
+  </div>
+</div>
+
+<script>
+  const PROVIDER_EMAIL = "kg.girl.j@mail.ru";
+
+  const SERVICES = {
+    en: [
+      "Green Card application assistance (forms only)",
+      "Driver’s license & permits",
+      "Car & health insurance assistance",
+      "Rideshare account setup (Uber / Lyft)",
+      "Traffic ticket checks",
+      "U.S. visa applications (U.S. Embassy – Kyrgyz Republic)",
+      "Address changes",
+      "Leasing applications",
+      "Translation services (EN / RU / KG)"
+    ],
+    ru: [
+      "Green Card (только заполнение форм)",
+      "Водительские права и разрешения",
+      "Авто- и медстраховки",
+      "Аккаунты rideshare (Uber / Lyft)",
+      "Проверка тикетов и штрафов",
+      "Визы США (Посольство США – КР)",
+      "Смена адреса",
+      "Заявления на аренду (leasing)",
+      "Переводы (EN / RU / KG)"
+    ],
+    kg: [
+      "Green Card арыздары (формаларды толтуруу гана)",
+      "Айдоочулук күбөлүк жана уруксаттар",
+      "Авто жана мед камсыздандыруу",
+      "Rideshare аккаунт ачуу (Uber / Lyft)",
+      "Айып пул/тикет текшерүү",
+      "АКШ визасы боюнча жардам (АКШ элчилиги – КР)",
+      "Дарек өзгөртүү",
+      "Ижара/лизинг арыздары",
+      "Котормо кызматтары (EN / RU / KG)"
+    ]
+  };
+
+  const T = {
+    en: {
+      siteTagline:"Help with documents & forms",
+      pillText:"RELIABLE & SECURE",
+      heroTitle:'EASYDOCS <span>ASSISTANCE</span>',
+      heroSub:"Step-by-step help with forms and documents. We speak English, Russian, and Kyrgyz.",
+      f1t:"Accurate Forms", f1d:"We help reduce mistakes and missing information.",
+      f2t:"Fast Support", f2d:"Online or in-person help, by appointment.",
+      f3t:"3 Languages", f3d:"English • Russian • Kyrgyz",
+      badgeTop:"STARTING AT", badgePrice:"$50", badgeBottom:"PER SERVICE",
+      ctaCallText:"CALL", ctaWAText:"WHATSAPP", ctaEmailText:"EMAIL",
+      noteText:"Zelle payments accepted. Write your Name + Service in the memo.",
+      servicesTitle:"Services",
+      disclaimer:'<b>Disclaimer:</b> We provide application assistance and document preparation only. We are not attorneys and do not provide legal advice. No guarantees are made.',
+      paymentsTitle:"Payments (Zelle)",
+      zelleLabel:"Zelle",
+      copyBtn:"Copy",
+      payHelp:"If you need help paying with Zelle, call or WhatsApp us.",
+      receiptNote:"Need a receipt? Send us your name + amount + email/phone after payment.",
+      apptTitle:"Appointment Request",
+      nameLabel:"Name",
+      serviceLabel:"Service",
+      dayLabel:"Preferred Day (Mon/Wed/Fri)",
+      timeLabel:"Preferred Time",
+      phoneLabel2:"Your phone",
+      emailLabel2:"Your email",
+      notesLabel:"Notes",
+      sendAppt:"Send Request",
+      apptSmall:"“Send Request” opens your email app with the request ready to send.",
+      contactTitle:"Contact",
+      langLabel:"Languages:",
+      contactNote:"Available by appointment (Mon/Wed/Fri). Call or WhatsApp to confirm.",
+      footerLang:"EN • RU • KG"
+    },
+    ru: {
+      siteTagline:"Помощь с документами и формами",
+      pillText:"НАДЁЖНО И БЕЗОПАСНО",
+      heroTitle:'EASYDOCS <span>ASSISTANCE</span>',
+      heroSub:"Помогаем правильно заполнить документы и сопровождаем пошагово. Английский • Русский • Кыргызский.",
+      f1t:"Точно", f1d:"Помогаем избежать ошибок и пропусков.",
+      f2t:"Быстро", f2d:"Онлайн или лично, по записи.",
+      f3t:"3 языка", f3d:"English • Русский • Кыргызский",
+      badgeTop:"ЦЕНА ОТ", badgePrice:"$50", badgeBottom:"ЗА УСЛУГУ",
+      ctaCallText:"ПОЗВОНИТЬ", ctaWAText:"WHATSAPP", ctaEmailText:"EMAIL",
+      noteText:"Принимаем оплату Zelle. В комментарии: Имя + Услуга.",
+      servicesTitle:"Услуги",
+      disclaimer:'<b>Дисклеймер:</b> Мы предоставляем только помощь с заявлениями и подготовку документов. Мы не адвокаты и не даём юридические консультации. Гарантии результата не даются.',
+      paymentsTitle:"Оплата (Zelle)",
+      zelleLabel:"Zelle",
+      copyBtn:"Скопировать",
+      payHelp:"Если нужна помощь с оплатой — позвоните или напишите в WhatsApp.",
+      receiptNote:"Нужна квитанция? Пришлите имя + сумму + email/телефон после оплаты.",
+      apptTitle:"Запись",
+      nameLabel:"Имя",
+      serviceLabel:"Услуга",
+      dayLabel:"День (Пн/Ср/Пт)",
+      timeLabel:"Время",
+      phoneLabel2:"Ваш телефон",
+      emailLabel2:"Ваш email",
+      notesLabel:"Комментарий",
+      sendAppt:"Отправить",
+      apptSmall:"Кнопка откроет ваш email с готовым текстом.",
+      contactTitle:"Контакты",
+      langLabel:"Языки:",
+      contactNote:"По записи (Пн/Ср/Пт). Позвоните или WhatsApp, чтобы подтвердить.",
+      footerLang:"EN • RU • KG"
+    },
+    kg: {
+      siteTagline:"Документ жана формалар боюнча жардам",
+      pillText:"ИШЕНИМДҮҮ ЖАНА КООПСУЗ",
+      heroTitle:'EASYDOCS <span>ASSISTANCE</span>',
+      heroSub:"Формаларды туура толтурууга жана кадам-кадам жардам беребиз. English • Русский • Кыргызский.",
+      f1t:"Так", f1d:"Ката кетирбөөгө жардам беребиз.",
+      f2t:"Тез", f2d:"Онлайн же жеке, алдын ала жазылуу менен.",
+      f3t:"3 тил", f3d:"English • Русский • Кыргызский",
+      badgeTop:"БААСЫ", badgePrice:"$50", badgeBottom:"КЫЗМАТКА",
+      ctaCallText:"ЧАЛУУ", ctaWAText:"WHATSAPP", ctaEmailText:"EMAIL",
+      noteText:"Zelle кабыл алабыз. Memo: Атыңыз + Кызмат.",
+      servicesTitle:"Кызматтар",
+      disclaimer:'<b>Эскертүү:</b> Биз арыздарды толтурууга жана документ даярдоого гана жардам беребиз. Юридикалык кеңеш бербейбиз. Натыйжага кепилдик жок.',
+      paymentsTitle:"Төлөм (Zelle)",
+      zelleLabel:"Zelle",
+      copyBtn:"Көчүрүү",
+      payHelp:"Төлөм боюнча жардам керек болсо — чалыңыз же WhatsApp жазыңыз.",
+      receiptNote:"Квитанция керекпи? Төлөмдөн кийин аты-жөнүңүздү, сумманы жана email/телефон жибериңиз.",
+      apptTitle:"Жолугушууга жазылуу",
+      nameLabel:"Атыңыз",
+      serviceLabel:"Кызмат",
+      dayLabel:"Күн (Дш/Шр/Жм)",
+      timeLabel:"Убакыт",
+      phoneLabel2:"Телефонуңуз",
+      emailLabel2:"Email",
+      notesLabel:"Кошумча маалымат",
+      sendAppt:"Жөнөтүү",
+      apptSmall:"Бул баскыч даяр email билдирүүсүн ачат.",
+      contactTitle:"Байланыш",
+      langLabel:"Тилдер:",
+      contactNote:"Алдын ала жазылуу менен (Дш/Шр/Жм). Чалыңыз же WhatsApp.",
+      footerLang:"EN • RU • KG"
+    }
+  };
+
+  function setLang(lang){
+    const t = T[lang];
+    document.getElementById("siteTagline").textContent = t.siteTagline;
+    document.getElementById("pillText").textContent = t.pillText;
+    document.getElementById("heroTitle").innerHTML = t.heroTitle;
+    document.getElementById("heroSub").textContent = t.heroSub;
+
+    document.getElementById("f1t").textContent = t.f1t;
+    document.getElementById("f1d").textContent = t.f1d;
+    document.getElementById("f2t").textContent = t.f2t;
+    document.getElementById("f2d").textContent = t.f2d;
+    document.getElementById("f3t").textContent = t.f3t;
+    document.getElementById("f3d").textContent = t.f3d;
+
+    document.getElementById("badgeTop").textContent = t.badgeTop;
+    document.getElementById("badgePrice").textContent = t.badgePrice;
+    document.getElementById("badgeBottom").textContent = t.badgeBottom;
+
+    document.getElementById("ctaCallText").textContent = t.ctaCallText;
+    document.getElementById("ctaWAText").textContent = t.ctaWAText;
+    document.getElementById("ctaEmailText").textContent = t.ctaEmailText;
+    document.getElementById("noteText").textContent = t.noteText;
+
+    document.getElementById("servicesTitle").textContent = t.servicesTitle;
+    document.getElementById("disclaimer").innerHTML = t.disclaimer;
+
+    document.getElementById("paymentsTitle").textContent = t.paymentsTitle;
+    document.getElementById("zelleLabel").textContent = t.zelleLabel + ":";
+    document.getElementById("copyBtn").textContent = t.copyBtn;
+    document.getElementById("payHelp").textContent = t.payHelp;
+    document.getElementById("receiptNote").textContent = t.receiptNote;
+
+    document.getElementById("apptTitle").textContent = t.apptTitle;
+    document.getElementById("nameLabel").textContent = t.nameLabel;
+    document.getElementById("serviceLabel").textContent = t.serviceLabel;
+    document.getElementById("dayLabel").textContent = t.dayLabel;
+    document.getElementById("timeLabel").textContent = t.timeLabel;
+    document.getElementById("phoneLabel2").textContent = t.phoneLabel2;
+    document.getElementById("emailLabel2").textContent = t.emailLabel2;
+    document.getElementById("notesLabel").textContent = t.notesLabel;
+    document.getElementById("sendAppt").textContent = t.sendAppt;
+    document.getElementById("apptSmall").textContent = t.apptSmall;
+
+    document.getElementById("contactTitle").textContent = t.contactTitle;
+    document.getElementById("langLabel").textContent = t.langLabel;
+    document.getElementById("contactNote").textContent = t.contactNote;
+    document.getElementById("footerLang").textContent = t.footerLang;
+
+    // services list + dropdown
+    const list = document.getElementById("servicesList");
+    list.innerHTML = "";
+    SERVICES[lang].forEach(s=>{
+      const li=document.createElement("li");
+      li.textContent=s;
+      list.appendChild(li);
+    });
+    const sel=document.getElementById("service");
+    sel.innerHTML="";
+    SERVICES[lang].forEach(s=>{
+      const opt=document.createElement("option");
+      opt.value=s; opt.textContent=s;
+      sel.appendChild(opt);
+    });
+
+    document.getElementById("btnEN").classList.toggle("active", lang==="en");
+    document.getElementById("btnRU").classList.toggle("active", lang==="ru");
+    document.getElementById("btnKG").classList.toggle("active", lang==="kg");
+  }
+
+  function mailtoLink(subject, body){
+    return `mailto:${encodeURIComponent(PROVIDER_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  document.getElementById("sendAppt").addEventListener("click", (e)=>{
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const service = document.getElementById("service").value;
+    const day = document.getElementById("day").value;
+    const time = document.getElementById("time").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const notes = document.getElementById("notes").value.trim();
+
+    const subject = "Appointment Request - EasyDocs Assistance";
+    const body =
+`Appointment Request
+Name: ${name || "-"}
+Service: ${service}
+Preferred day: ${day}
+Preferred time: ${time || "-"}
+Phone: ${phone || "-"}
+Email: ${email || "-"}
+Notes: ${notes || "-"}
+
+Please confirm the appointment.`;
+
+    window.location.href = mailtoLink(subject, body);
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", async ()=>{
+    const txt = document.getElementById("zelleEmail").textContent.trim();
+    try{
+      await navigator.clipboard.writeText(txt);
+      alert("Copied: " + txt);
+    }catch{
+      alert("Copy this Zelle email: " + txt);
+    }
+  });
+
+  // init
+  setLang("en");
+  document.getElementById("btnEN").addEventListener("click", ()=>setLang("en"));
+  document.getElementById("btnRU").addEventListener("click", ()=>setLang("ru"));
+  document.getElementById("btnKG").addEventListener("click", ()=>setLang("kg"));
+</script>
+</body>
+</html>
